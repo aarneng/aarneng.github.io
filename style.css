@@ -253,10 +253,10 @@ a:visited {
 }
 
 .animation-container {
-  position: absolute;
+  position: relative;
   left: 26vw;
-  bottom: 18vh;
-  width: 110%;
+  bottom: 38vh;
+  width: 40vw;
 }
 
 #slide-title {
@@ -323,4 +323,19 @@ TODO: FIX SPAGHETTI CODE
 
 @keyframes slide {
   100% { opacity: 100%; left: 0; }
+}
+
+@media (max-aspect-ratio: 1) {
+  .header img {
+    top: 0%;
+    width: 90%;
+  }
+  .animation-container {
+    left: 2vw;
+    bottom: 20vh;
+    width: 200vw;
+  }
+  #slide-title {
+    font-size: 33px;
+  }
 }
