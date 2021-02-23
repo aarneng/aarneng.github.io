@@ -379,4 +379,7 @@ TODO: FIX SPAGHETTI CODE
   .slide-subheading {
     font-size: 6.5vw;
   }
+  .column {
+    min-height: 90vh;
+  }
 }
