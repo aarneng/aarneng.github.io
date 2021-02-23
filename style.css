@@ -205,8 +205,12 @@ a:visited {
 .big-image-container:hover .less-opaque-image {
   opacity: 0.3;
 }
-
 .image-fit {
+  width:100%;
+  height:100%;
+  object-fit: contain;
+}
+.small-image-fit {
   width:120px;
   height:100%;
   object-fit: contain;
