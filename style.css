@@ -223,6 +223,11 @@ a:visited {
   object-fit: contain;
 }
 
+.wide-image-container {
+  width: calc(var(--hover-img-size) * 2);
+  height: calc(var(--hover-img-size) * 2 / 1040 * 316);
+}
+
 .less-opaque-image:hover {
   opacity: 0.3;
 }
@@ -289,7 +294,7 @@ a:visited {
 .test-font-size {
   font-size: 125%;
 }
-.
+
 #slide-title {
   font-size: 4vw;
 
@@ -392,6 +397,15 @@ TODO: FIX SPAGHETTI CODE
   }
   .column {
     min-height: 90vh;
+  }
+  .wide-image-container {
+    width: calc(var(--hover-img-size) * 4);
+    height: calc(var(--hover-img-size) * 4 * 5000 / 1040);
+  }
+  .hover-hugezoom:hover {  
+    -ms-transform: scale(3.6) translate(40%); /* IE 9 */
+    -webkit-transform: scale(3.6) translate(40%); /* Safari 3-8 */
+    transform: scale(2.3) translate(25%);
   }
   @media (pointer:coarse) and (orientation: portrait ) {
     .test-font-size {
