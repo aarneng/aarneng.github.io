@@ -286,6 +286,10 @@ a:visited {
   width: 400vw;
 }
 
+.test-font-size {
+  font-size: 125%;
+}
+
 #slide-title {
   font-size: 4vw;
 
@@ -388,5 +392,13 @@ TODO: FIX SPAGHETTI CODE
   }
   .column {
     min-height: 90vh;
+  }
+  @media (pointer:coarse) and (orientation: portrait ) {
+    .test-font-size {
+      font-size: 250%;
+    }
+    .container {
+      min-height: 50vh;
+    }
   }
 }
