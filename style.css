@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+:root {
+  --header-height: 84vh;
+  --hover-img-size: 9.85vw;
+}
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -16,9 +20,34 @@ body {
   font-family: Inter, Montserrat;
   margin: 0px;
   background-color: #333333;
-  background-image: url("background_small.jpg");
+  /* background-image: url("background_small.jpg"); */
   background-repeat: no-repeat;
-  background-size: 100vw 100vh;
+  background-size: contain;
+
+}
+
+.horizontal-center {
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+.background-img {
+  position: absolute;
+  z-index: -100;
+  top: 0px;
+  overflow: hidden;
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+}
+
+.header img {
+  position: relative;
+  display: block;
+  height: 35vw;
+  width: auto;
 }
 
 @media screen and (min-width: 3500px) {
@@ -34,7 +63,7 @@ h1 {
 }
 
 h2 {
-  font-size: 40px;
+  font-size: 200%;
   color:#EA502E;
   font: Inter;
 }
@@ -64,19 +93,14 @@ a:visited {
   border-radius: 6px;
 }
 
-.header{
+.header {
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.83);
-  
-  --margin-width: 8vh;
-  margin-left: var(--margin-width);
-  margin-right: var(--margin-width);
-  margin-top: var(--margin-width);
-  margin-bottom: var(--margin-width);
-  height: 84vh;
+  margin: 8vh;
+  height: var(--header-height);
 }
 
-.header header-text {
+.set-text {
   position: relative;
 
   color: white;
@@ -106,15 +130,6 @@ a:visited {
   background-color: #EA502E;
 }
 
-.header img {
-  position: relative;
-  width: 35%;
-  margin-left: 2%;
-  
-  top: 50%;
-  transform: translate(0, -50%);
-}
-
 .header-right {
   float: right;
   padding: 3vh;
@@ -127,7 +142,7 @@ a:visited {
 }
 
 .light-container {
-  padding: 7vh;
+  padding: 1vh;
   padding-top: 2vh;
   background-color: #3D3D3D;
   
@@ -156,9 +171,9 @@ a:visited {
 }
 
 .small-image-container {
-  width:9.78vw;
-  height: 9.78vw;
-  padding:2px;
+  width: var(--hover-img-size);
+  height: var(--hover-img-size);
+  padding: 2px;
 }
 
 .small-image-container:hover .image-text {
@@ -174,9 +189,9 @@ a:visited {
 }
 
 .big-image-container {
-  width: calc(9.78vw * 2);
-  height: calc(9.78vw * 2);
-  padding:2px;
+  width: calc(var(--hover-img-size) * 2);
+  height: calc(var(--hover-img-size) * 2);
+  padding: 2px;
 }
 
 .big-image-container:hover .image-text {
@@ -192,8 +207,8 @@ a:visited {
 }
 
 .image-fit {
-  max-width:100%;
-  max-height:100%;
+  width:120px;
+  height:100%;
   object-fit: contain;
 }
 
@@ -225,6 +240,7 @@ a:visited {
   float: left;
   padding-left: calc(2vw/1.92);
   padding-right: calc(2vw/1.92);
+  min-height: 100vh;
 }
 
 .colum-amt-2 {
@@ -253,14 +269,14 @@ a:visited {
 }
 
 .animation-container {
-  position: relative;
+  position: absolute;
   left: 26vw;
-  bottom: 38vh;
-  width: 40vw;
+  bottom: 20vh;
+  width: 400vw;
 }
 
 #slide-title {
-  font-size: 55px;
+  font-size: 4vw;
 
   position: relative;
   overflow: hidden;
@@ -273,51 +289,30 @@ a:visited {
 TODO: FIX SPAGHETTI CODE
 
 */
-#slide-subheading1 {
-  font-size: 35px;
 
+.slide-subheading {
+  font-size: 3vw;
   position: relative;
   overflow: hidden;
   opacity: 0%;
   animation: slide 0.3s forwards;
-  left: 250px;
+  left: 4%; /*animation left, not text left*/
   margin-left: 5vw;
+}
+
+#slide-subheading-delay1 {
   animation-delay: 0.15s;
 }
 
-#slide-subheading2 {
-  font-size: 35px;
-
-  position: relative;
-  overflow: hidden;
-  opacity: 0%;
-  animation: slide 0.3s forwards;
-  left: 250px;
-  margin-left: 5vw;
+#slide-subheading-delay2 {
   animation-delay: 0.25s;
 }
 
-#slide-subheading3 {
-  font-size: 35px;
-
-  position: relative;
-  overflow: hidden;
-  opacity: 0%;
-  animation: slide 0.3s forwards;
-  left: 250px;
-  margin-left: 5vw;
+#slide-subheading-delay3 {
   animation-delay: 0.35s;
 }
 
-#slide-subheading4 {
-  font-size: 35px;
-
-  position: relative;
-  overflow: hidden;
-  opacity: 0%;
-  animation: slide 0.3s forwards;
-  left: 250px;
-  margin-left: 5vw;
+#slide-subheading-delay4 {
   animation-delay: 0.45s;
 }
 
@@ -325,17 +320,58 @@ TODO: FIX SPAGHETTI CODE
   100% { opacity: 100%; left: 0; }
 }
 
+.hide-on-tall-screen {
+  visibility: visible;
+}
+
+/*
+  change layout for mobile/tall screens
+*/
 @media (max-aspect-ratio: 1) {
+  :root {
+    --hover-img-size: 10.29vw;
+  }
+  .header {
+    margin: 0px;
+    background-color: rgba(0,0,0,0.7);
+  }
+  .set-text {
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.83);
+  }
   .header img {
-    top: 0%;
-    width: 90%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: vh;
+    height: 80vw;
+    top: 6%;
+  }
+  .background-img {
+    height: var(--header-height);
   }
   .animation-container {
     left: 2vw;
     bottom: 20vh;
     width: 200vw;
   }
+  .small-image-container {
+    width: calc(var(--hover-img-size) * 2);
+    height: calc(var(--hover-img-size) * 2);
+  }
+  .big-image-container {
+    width: calc(var(--hover-img-size) * 4);
+    height: calc(var(--hover-img-size)  * 4);
+  }
+  .hide-on-tall-screen {
+    display: none;
+  }
+  .fit-to-tall-screen {
+    width: 46%;
+  }
   #slide-title {
-    font-size: 33px;
+    font-size: 8vw;
+  }
+  .slide-subheading {
+    font-size: 6.5vw;
   }
 }
