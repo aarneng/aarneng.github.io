@@ -397,7 +397,7 @@ TODO: FIX SPAGHETTI CODE
     .test-font-size {
       font-size: 250%;
     }
-    .container {
+    .column {
       min-height: 50vh;
     }
   }
