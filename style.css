@@ -331,7 +331,8 @@ TODO: FIX SPAGHETTI CODE
 /*
   change layout for mobile/tall screens
 */
-@media (max-aspect-ratio: 1) {
+
+@media only screen and (max-aspect-ratio: 1), (pointer:coarse) and (orientation: portrait ) {
   :root {
     --hover-img-size: 10.29vw;
   }
