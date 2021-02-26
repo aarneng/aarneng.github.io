@@ -20,41 +20,45 @@ body {
   font-family: Inter, Montserrat;
   margin: 0px;
   background-color: #333333;
-  /* background-image: url("background_small.jpg"); */
   background-repeat: no-repeat;
   background-size: contain;
-
 }
 
-.horizontal-center {
-  margin: 0;
-  position: absolute;
-  left: 50%;
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-}
 .background-img {
+  /*
+  styling for the background image
+  align it to the middle and don't squish it when resizing screen
+  */
   position: absolute;
   z-index: -100;
   top: 0px;
   overflow: hidden;
   object-fit: cover;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
 }
 
+.header {
+  /*
+  styling for the black box on the top screen
+  */
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.83);
+  margin: 8vh;
+  height: var(--header-height);
+}
+
 .header img {
+  /* display my image*/
   position: relative;
   display: block;
   height: 35vw;
   width: auto;
 }
 
-@media screen and (min-width: 3500px) {
-  body {
-    background-image: url("background_big.jpg");
-  }
-}
+/*
+set text and link styles
+*/
 
 h1 {
   font-size: 55px;
@@ -85,12 +89,14 @@ a:link {
   color: #F24535;
 }
 
-/* visited link */
 a:visited {
   color: green;
 }
 
 #navbar {
+  /*
+  styling for navigation menu
+  */
   overflow: hidden;
   padding: 20px 10px;
   transition: 0.4s;
@@ -100,16 +106,12 @@ a:visited {
   border-radius: 6px;
 }
 
-.header {
-  overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.83);
-  margin: 8vh;
-  height: var(--header-height);
-}
-
 .set-text {
+  /*
+  set the text for the inital screen
+  this should be done with the p tag but idk i couldnt make it work
+  */
   position: relative;
-
   color: white;
   font-family: Montserrat;
   font-weight: bold;
@@ -117,6 +119,9 @@ a:visited {
 }
 
 .button {
+  /*
+  styling for buttons
+  */
   padding: 8px;
   font-size: 35px; 
   border-radius: 4px;
@@ -128,11 +133,6 @@ a:visited {
   font-weight: bold;
 }
 
-.button-align-left {
-  text-align: left;
-  width: 100%;
-}
-
 .button:hover {
   background-color: #EA502E;
 }
@@ -142,6 +142,10 @@ a:visited {
   padding: 3vh;
 }
 
+/*
+set sttyles for containers on website
+*/
+
 .container {
   padding: 7vh;
   padding-top: 2vh;
@@ -149,11 +153,15 @@ a:visited {
 }
 
 .light-container {
-  padding: 1vh;
+  padding: 7vh;
   padding-top: 2vh;
   background-color: #3D3D3D;
   
 }
+
+/*
+set styless for containers and styles for when containers are hovered over
+*/
 
 .hover-container {
   background-color: white;
@@ -177,9 +185,14 @@ a:visited {
   transform: scale(2.9);
 }
 
+/* 
+set different styles for hoverd containers, 
+eg smaller images or more transparent images
+*/
+
 .small-image-container {
-  width: var(--hover-img-size);
-  height: var(--hover-img-size);
+  width: 50%;
+  height: 50%;
   padding: 2px;
 }
 
@@ -212,25 +225,29 @@ a:visited {
 .big-image-container:hover .less-opaque-image {
   opacity: 0.3;
 }
+
+/*
+force images to fit in containers
+*/
 .image-fit {
   width:100%;
   height:100%;
   object-fit: contain;
 }
+
 .small-image-fit {
   width:120px;
   height:100%;
   object-fit: contain;
 }
 
-.wide-image-container {
-  width: calc(var(--hover-img-size) * 2);
-  height: calc(var(--hover-img-size) * 2 / 1040 * 316);
-}
-
 .less-opaque-image:hover {
   opacity: 0.3;
 }
+
+/*
+text overlaid on hovvered images
+*/
 
 .image-text {
   position: absolute;
@@ -243,12 +260,9 @@ a:visited {
   text-align: center;
 }
 
-.text {
-  color: white;
-  font-size: 16px;
-  padding: 16px 32px;
-}
-
+/*
+styling for verticval columns on site
+*/
 .column {  
   border: 2px solid #222222;
   margin-top: 1%;
@@ -256,7 +270,6 @@ a:visited {
   float: left;
   padding-left: calc(2vw/1.92);
   padding-right: calc(2vw/1.92);
-  min-height: 100vh;
 }
 
 .colum-amt-2 {
@@ -284,15 +297,22 @@ a:visited {
   border: 1px solid #F24535;
 }
 
+/*
+set font size to a relative amount
+should be renamed but i don't feel like going through the html file
+*/
+.test-font-size {
+  font-size: 125%;
+}
+
+/*
+add css animations to title screen
+*/
 .animation-container {
   position: absolute;
   left: 26vw;
   bottom: 20vh;
   width: 400vw;
-}
-
-.test-font-size {
-  font-size: 125%;
 }
 
 #slide-title {
@@ -316,7 +336,11 @@ TODO: FIX SPAGHETTI CODE
   overflow: hidden;
   opacity: 0%;
   animation: slide 0.3s forwards;
-  left: 4%; /*animation left, not text left*/
+  left: 400px; 
+  /*
+    animation left, not text left. Using pixels instead of 
+    % so that the animation looks the same on all screens
+  */
   margin-left: 5vw;
 }
 
@@ -342,6 +366,14 @@ TODO: FIX SPAGHETTI CODE
 
 .hide-on-tall-screen {
   visibility: visible;
+}
+
+.horizontal-center {
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 
 /*
@@ -375,10 +407,6 @@ TODO: FIX SPAGHETTI CODE
     bottom: 20vh;
     width: 200vw;
   }
-  .small-image-container {
-    width: calc(var(--hover-img-size) * 2);
-    height: calc(var(--hover-img-size) * 2);
-  }
   .big-image-container {
     width: calc(var(--hover-img-size) * 4);
     height: calc(var(--hover-img-size)  * 4);
@@ -395,13 +423,10 @@ TODO: FIX SPAGHETTI CODE
   .slide-subheading {
     font-size: 6.5vw;
   }
-  .column {
-    min-height: 90vh;
-  }
-  .wide-image-container {
+  /* .wide-image-container {
     width: calc(var(--hover-img-size) * 4);
     height: calc(var(--hover-img-size) * 4 * 5000 / 1040);
-  }
+  } */
   .hover-hugezoom:hover {  
     -ms-transform: scale(3.6) translate(40%); /* IE 9 */
     -webkit-transform: scale(3.6) translate(40%); /* Safari 3-8 */
@@ -410,9 +435,6 @@ TODO: FIX SPAGHETTI CODE
   @media (pointer:coarse) and (orientation: portrait ) {
     .test-font-size {
       font-size: 250%;
-    }
-    .column {
-      min-height: 65vh;
     }
   }
 }

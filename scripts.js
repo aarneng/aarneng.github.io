@@ -1,6 +1,16 @@
+function changeBackgroundOnBigScreen() {
+  // make background higher quality on larger screens
+  var width = window.innerWidth  * window.devicePixelRatio
+  if (width >= 3000) {
+    document.getElementById('backgroundImg').src='background_big.jpg';
+  }
+}
+
 window.onscroll = function() {scrollFunction()};
 function scrollFunction() {
-  if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+  // display navigation bar when the window has been scrolled enough
+  const cutoffPoint = screen.height / 3;
+  if (document.body.scrollTop >= cutoffPoint || document.documentElement.scrollTop >= cutoffPoint) {
     document.getElementById("navbar").style.display = "block";
   }
   else {
@@ -9,6 +19,7 @@ function scrollFunction() {
 }
 
 function displayMenu() {
+  // toggle insides of the menu once the menu button has been clicked
   if (document.getElementById("navigation").style.display === "none") {
     openMenu();
   } else {
@@ -30,67 +41,46 @@ function closeMenu() {
 
 document.onmousemove = closeMenuMaybe;
 function closeMenuMaybe(event) {
-  var x = event.clientX;     // Get the horizontal coordinate
-  var y = event.clientY;     // Get the vertical coordinate
+  // close the menu if the mouse hovers away from the menu
+  var x = event.clientX;
+  var y = event.clientY;
   var menu = document.getElementById("navbar");
   if ((menu.style.display === "block") && (x > menu.clientWidth * 1.2 || y > menu.clientHeight * 1.2)) {
     closeMenu();
   }
 }
 
-function toggleTextLeft1() {
-  var text = document.getElementById("textL1");
-  if (text.style.display === "none") {
-    text.style.display = "block";
-  } else {
-    text.style.display = "none";
+function sameHeight(containerName) {
+  // make vertical display menus next to eachother the same height
+  var ancestor = document.getElementById(containerName);
+  var descendents = ancestor.getElementsByClassName("column");
+  maxH = 0;
+  for (var i = 0; i < descendents.length; i++) {
+    height = descendents[i].offsetHeight;
+    if (height > maxH) {maxH = height;}
+  }
+  for (var i = 0; i < descendents.length; i++) {
+    descendents[i].style.minHeight = maxH + "px";
   }
 }
 
-// i don't know how to do this without repeating the code :(
-// TODO: learn how to do this without repetition
+document.addEventListener('readystatechange', event => { 
+  // When window loaded ( external resources are loaded too- `css`,`src`, etc...) 
+  if (event.target.readyState === "complete") {
+    sameHeight("projectContainers");
+    sameHeight("workContainers");
+    changeBackgroundOnBigScreen();
+  }
+});
 
-function toggleTextLeft2() {
-  var text = document.getElementById("textL2");
+function toggleTextDisplay(textId) {
+  //open/close text in work experience menu
+  var text = document.getElementById(textId);
   if (text.style.display === "none") {
     text.style.display = "block";
   } else {
     text.style.display = "none";
   }
-}
-
-function toggleTextLeft3() {
-  var text = document.getElementById("textL3");
-  if (text.style.display === "none") {
-    text.style.display = "block";
-  } else {
-    text.style.display = "none";
-  }
-}
-
-function toggleTextRight1() {
-  var text = document.getElementById("textR1");
-  if (text.style.display === "none") {
-    text.style.display = "block";
-  } else {
-    text.style.display = "none";
-  }
-}
-
-function toggleTextRight2() {
-  var text = document.getElementById("textR2");
-  if (text.style.display === "none") {
-    text.style.display = "block";
-  } else {
-    text.style.display = "none";
-  }
-}
-
-function toggleTextRight3() {
-  var text = document.getElementById("textR3");
-  if (text.style.display === "none") {
-    text.style.display = "block";
-  } else {
-    text.style.display = "none";
-  }
+  //sameHeight("workContainers")
+  //todo: create a function that minimises the heights once text gets toggled off
 }
