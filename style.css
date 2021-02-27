@@ -63,26 +63,21 @@ set text and link styles
 h1 {
   font-size: 55px;
   color:#F24535;
-  font: Inter;
 }
 
 h2 {
   font-size: 200%;
   color:#EA502E;
-  font: Inter;
 }
 
 h3 {
   font-size: 180%;
-  font-weight: 550;
   color:#EA502E;
-  font: Inter;
 }
 
 p {
   font-size: 30px;
   color: white;
-  font: Inter;
 }
 
 a:link {
@@ -153,10 +148,9 @@ set sttyles for containers on website
 }
 
 .light-container {
-  padding: 7vh;
+  padding: 1vw;
   padding-top: 2vh;
   background-color: #3D3D3D;
-  
 }
 
 /*
@@ -209,8 +203,6 @@ eg smaller images or more transparent images
 }
 
 .big-image-container {
-  width: calc(var(--hover-img-size) * 2);
-  height: calc(var(--hover-img-size) * 2);
   padding: 2px;
 }
 
@@ -369,18 +361,18 @@ TODO: FIX SPAGHETTI CODE
 }
 
 .horizontal-center {
-  margin: 0;
-  position: absolute;
-  left: 50%;
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  text-align: center;
 }
 
 /*
   change layout for mobile/tall screens
 */
 
-@media only screen and (max-aspect-ratio: 1), (pointer:coarse) and (orientation: portrait ) {
+@media only screen and (max-aspect-ratio: 1/1), (pointer:coarse) and (orientation: portrait ) {
   :root {
     --hover-img-size: 10.29vw;
   }
@@ -395,7 +387,7 @@ TODO: FIX SPAGHETTI CODE
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: vh;
+    margin-top: 0vh;
     height: 80vw;
     top: 6%;
   }
@@ -406,10 +398,6 @@ TODO: FIX SPAGHETTI CODE
     left: 2vw;
     bottom: 20vh;
     width: 200vw;
-  }
-  .big-image-container {
-    width: calc(var(--hover-img-size) * 4);
-    height: calc(var(--hover-img-size)  * 4);
   }
   .hide-on-tall-screen {
     display: none;
@@ -423,10 +411,6 @@ TODO: FIX SPAGHETTI CODE
   .slide-subheading {
     font-size: 6.5vw;
   }
-  /* .wide-image-container {
-    width: calc(var(--hover-img-size) * 4);
-    height: calc(var(--hover-img-size) * 4 * 5000 / 1040);
-  } */
   .hover-hugezoom:hover {  
     -ms-transform: scale(3.6) translate(40%); /* IE 9 */
     -webkit-transform: scale(3.6) translate(40%); /* Safari 3-8 */
