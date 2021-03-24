@@ -2,7 +2,7 @@ function changeBackgroundOnBigScreen() {
   // make background higher quality on larger screens
   var width = window.innerWidth  * window.devicePixelRatio
   if (width >= 3000) {
-    document.getElementById('backgroundImg').src='background_big.jpg';
+    document.getElementById('backgroundImg').src='imagery/background_big.jpg';
   }
 }
 
